@@ -1,0 +1,2 @@
+// FORM ACTIONS
+export const CHANGE_FORM_STEP: string = 'CHANGE_FORM_STEP';

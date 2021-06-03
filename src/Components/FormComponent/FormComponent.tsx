@@ -5,13 +5,39 @@ import { InputComponent } from '..';
 import {
    StyledFormComponent,
    StyledFormFieldWrapper,
+   StyledErrorTextWrapper,
 } from './FormComponent.css';
+
+interface Errors {
+   name: string | undefined;
+   preparation_time: string | undefined;
+   type: string | undefined;
+}
 
 const FormComponent: React.FC = () => {
    const handleSubmit = () => {};
    return (
       <Form
          onSubmit={handleSubmit}
+         validate={values => {
+            const errors: Errors = {
+               name: undefined,
+               preparation_time: undefined,
+               type: undefined,
+            };
+            if (!values.name) {
+               errors.name = 'Required';
+            } else if (values.name.length < 3) {
+               errors.name = 'Dish name is too short';
+            }
+            if (!values.preparation_time) {
+               errors.preparation_time = 'Required';
+            }
+            if (!values.type) {
+               errors.type = 'Required';
+            }
+            return errors;
+         }}
          render={({ handleSubmit, form, submitting, pristine, values }) => (
             <StyledFormComponent onSubmit={handleSubmit}>
                <Field name='name'>
@@ -24,6 +50,11 @@ const FormComponent: React.FC = () => {
                            meta={meta}
                            placeholder='Dish Name'
                         />
+                        {meta.error && meta.touched && (
+                           <StyledErrorTextWrapper>
+                              {meta.error}
+                           </StyledErrorTextWrapper>
+                        )}
                      </StyledFormFieldWrapper>
                   )}
                </Field>
@@ -37,6 +68,11 @@ const FormComponent: React.FC = () => {
                            meta={meta}
                            placeholder='Preparation Time'
                         />
+                        {meta.error && meta.touched && (
+                           <StyledErrorTextWrapper>
+                              {meta.error}
+                           </StyledErrorTextWrapper>
+                        )}
                      </StyledFormFieldWrapper>
                   )}
                </Field>
@@ -50,6 +86,11 @@ const FormComponent: React.FC = () => {
                            meta={meta}
                            placeholder='Dish Type'
                         />
+                        {meta.error && meta.touched && (
+                           <StyledErrorTextWrapper>
+                              {meta.error}
+                           </StyledErrorTextWrapper>
+                        )}
                      </StyledFormFieldWrapper>
                   )}
                </Field>

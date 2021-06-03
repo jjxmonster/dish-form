@@ -2,6 +2,7 @@ interface Theme {
    colors: {
       grey: {
          normal: string;
+         light: string;
       };
       blue: {
          normal: string;
@@ -19,7 +20,8 @@ interface Theme {
 export const theme: Theme = {
    colors: {
       grey: {
-         normal: '#b3b3b3',
+         normal: '#949494',
+         light: '#fcfcfc',
       },
       blue: {
          normal: '#09b3bf',

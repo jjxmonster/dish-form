@@ -39,7 +39,6 @@ const InputComponent: React.FC<InputComponentProps> = ({
             return (
                <StyledInput
                   type={type}
-                  placeholder={placeholder}
                   {...input}
                   {...meta}
                   step='1'
