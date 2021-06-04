@@ -22,5 +22,9 @@ export const StyledSelectInput = styled.select`
    border-radius: 1vh;
    height: 50%;
    font-size: 1.7vh;
+   cursor: pointer;
    background: ${({ theme }) => theme.colors.grey.light};
+   > option {
+      cursor: pointer;
+   }
 `;

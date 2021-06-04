@@ -4,6 +4,9 @@ export const StyledNavBar = styled.nav`
    flex: 2;
    padding-top: 5%;
    background: ${({ theme }) => theme.colors.gradient.horizontal};
+   .active {
+      opacity: 1;
+   }
 `;
 export const StyledNavNumberElement = styled.div`
    color: white;
@@ -13,9 +16,7 @@ export const StyledNavNumberElement = styled.div`
    margin: 0 15%;
    opacity: 0.5;
    cursor: pointer;
-   > .active {
-      opacity: 1;
-   }
+
    > h2 {
       font-size: 3vh;
    }

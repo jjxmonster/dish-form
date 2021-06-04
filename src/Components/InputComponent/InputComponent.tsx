@@ -8,6 +8,8 @@ export interface InputComponentProps {
    placeholder: string;
    meta: FieldMetaState<any>;
    input: FieldInputProps<any, HTMLElement>;
+   min?: number;
+   max?: number;
 }
 
 const InputComponent: React.FC<InputComponentProps> = ({
@@ -30,6 +32,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
          case 'select':
             return (
                <StyledSelectInput {...input}>
+                  <option></option>
                   <option value='pizza'>🍕 Pizza</option>
                   <option value='soup'>🥣 Soup</option>
                   <option value='sandwich'>🥪 Sandwich</option>
@@ -46,7 +49,28 @@ const InputComponent: React.FC<InputComponentProps> = ({
                   max='20:00:00'
                />
             );
-
+         case 'number':
+            return (
+               <StyledInput
+                  type={type}
+                  placeholder={placeholder}
+                  {...input}
+                  {...meta}
+                  min='1'
+                  max='10'
+               />
+            );
+         case 'numberFloat':
+            return (
+               <StyledInput
+                  type='number'
+                  placeholder={placeholder}
+                  {...input}
+                  {...meta}
+                  step='0.01'
+                  min='1'
+               />
+            );
          default:
             return null;
       }

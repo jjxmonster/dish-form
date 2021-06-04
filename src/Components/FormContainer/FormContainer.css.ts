@@ -5,6 +5,7 @@ export const StyledFormContainer = styled.section`
    padding: 12% 0;
    display: flex;
    flex-direction: column;
+   position: relative;
 `;
 
 export const StyledFormHeader = styled.header`

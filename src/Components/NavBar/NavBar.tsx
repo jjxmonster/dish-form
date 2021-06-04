@@ -17,7 +17,7 @@ const NavBar: React.FC = () => {
       const getNavElements = document.querySelectorAll('.nav-element');
       const navElements = Array.from(getNavElements);
       if (activeStep !== undefined) {
-         navElements[activeStep - 1].classList.add('active');
+         navElements[Number(activeStep) - 1].classList.add('active');
       }
    });
    return (
