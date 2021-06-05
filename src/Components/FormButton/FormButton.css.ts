@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledButton = styled.button<StyledButtonProps>`
-   width: 10%;
+export const StyledButton = styled.button`
+   width: 12%;
    height: 7%;
    color: white;
    text-transform: uppercase;
@@ -16,10 +16,4 @@ export const StyledButton = styled.button<StyledButtonProps>`
    &:hover {
       transform: translateY(-5px);
    }
-   ${({ isButtonShouldShow }) =>
-      isButtonShouldShow ? 'display:block' : `display:none`}
 `;
-
-interface StyledButtonProps {
-   isButtonShouldShow: boolean;
-}

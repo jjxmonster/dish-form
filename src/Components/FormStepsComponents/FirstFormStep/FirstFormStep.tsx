@@ -95,11 +95,9 @@ const FirstFormStep: React.FC = () => {
                         </StyledFormFieldWrapper>
                      )}
                   </Field>
-                  <FormButton
-                     text='next'
-                     hideButton={hasValidationErrors}
-                     values={values}
-                  />
+                  {hasValidationErrors ? null : (
+                     <FormButton text='next' values={values} />
+                  )}
                </StyledFormComponent>
             );
          }}

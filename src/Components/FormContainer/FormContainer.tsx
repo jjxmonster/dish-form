@@ -25,6 +25,9 @@ const FormContainer: React.FC = () => {
                   return <h1>2. Configure your dish</h1>;
             }
          }
+         case '3': {
+            return <h1>3. Your dish order summary</h1>;
+         }
          default:
             return <h1>Form</h1>;
       }

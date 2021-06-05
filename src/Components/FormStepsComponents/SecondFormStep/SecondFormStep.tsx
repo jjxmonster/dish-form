@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../../../Reducers/appReducer';
 
 import PizzaForm from './PizzaForm';
+import SandwichForm from './SandwichForm';
 import SoupForm from './SoupForm';
 
 const SecondFormStep: React.FC = () => {
@@ -13,6 +14,8 @@ const SecondFormStep: React.FC = () => {
             return <PizzaForm />;
          case 'soup':
             return <SoupForm />;
+         case 'sandwich':
+            return <SandwichForm />;
          default:
             return <div>FORM</div>;
       }

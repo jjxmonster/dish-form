@@ -7,39 +7,37 @@ import {
    StyledErrorTextWrapper,
 } from '../../FormElements.css';
 
-interface SoupFormErrors {
-   spiciness_scale: string | undefined;
+interface SandwichFormErrors {
+   slices_of_bread: string | undefined;
 }
-const SoupForm = () => {
+const SandwichForm = () => {
    return (
       <Form
          onSubmit={console.log}
          validate={values => {
-            const errors: SoupFormErrors = {
-               spiciness_scale: undefined,
+            const errors: SandwichFormErrors = {
+               slices_of_bread: undefined,
             };
-
-            if (!values.spiciness_scale) {
-               errors.spiciness_scale = 'Required';
-            } else if (values.spiciness_scale > 10) {
-               errors.spiciness_scale =
-                  "You are crazy, but we don't have soup hot as hell";
-            } else if (values.spiciness_scale < 1) {
-               errors.spiciness_scale = 'Look like you want only water';
+            if (!values.slices_of_bread) {
+               errors.slices_of_bread = 'Required';
+            } else if (values.slices_of_bread > 50) {
+               errors.slices_of_bread = 'Too many slices for one order';
+            } else if (values.slices_of_bread < 1) {
+               errors.slices_of_bread = 'You will pay for an empty plate';
             }
             return errors;
          }}
          render={({ handleSubmit, hasValidationErrors, values }) => (
             <StyledFormComponent onSubmit={handleSubmit}>
-               <Field name='spiciness_scale'>
+               <Field name='slices_of_bread'>
                   {({ input, meta }) => (
                      <StyledFormFieldWrapper>
-                        <label>Specify the spiciness scale</label>
+                        <label>How many slices of bread do you want?</label>
                         <InputComponent
                            type='number(1-10)'
                            input={input}
                            meta={meta}
-                           placeholder='Spiciness scale'
+                           placeholder='Slices of bread'
                         />
                         {meta.error && meta.touched && (
                            <StyledErrorTextWrapper>
@@ -58,4 +56,4 @@ const SoupForm = () => {
    );
 };
 
-export default SoupForm;
+export default SandwichForm;

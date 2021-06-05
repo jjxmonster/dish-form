@@ -15,8 +15,6 @@ export const StyledNavNumberElement = styled.div`
    justify-content: space-between;
    margin: 0 15%;
    opacity: 0.5;
-   cursor: pointer;
-
    > h2 {
       font-size: 3vh;
    }

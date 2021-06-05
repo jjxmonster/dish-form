@@ -2,7 +2,11 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../Reducers/appReducer';
 
-import { FirstFormStep, SecondFormStep } from '../FormStepsComponents';
+import {
+   FirstFormStep,
+   SecondFormStep,
+   FormSummary,
+} from '../FormStepsComponents';
 
 const FormComponent: React.FC = () => {
    const formStep = useSelector((state: AppState) => state.formStep);
@@ -14,7 +18,7 @@ const FormComponent: React.FC = () => {
          case '2':
             return <SecondFormStep />;
          default:
-            return <div>Form</div>;
+            return <FormSummary />;
       }
    };
    return <FormSwitch />;

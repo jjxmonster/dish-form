@@ -1,25 +1,22 @@
 import * as types from '../Actions/types';
-import { changeFormStepAction } from '../Actions/appActions';
+import {
+   changeFormStepAction,
+   userConfiguredDishAction,
+} from '../Actions/appActions';
 
 export interface AppState {
-   formStep: string | undefined;
-   isUserPassedFirstStep: boolean;
-   isUserPassedSecondStep: boolean;
-   dishName: string | undefined;
-   preparationTime: string | undefined;
-   dishType: string | undefined;
+   formStep?: string;
+   dishName?: string;
+   preparationTime?: string;
+   dishType?: string;
+   dishConfig?: string;
 }
 
 const initialState: AppState = {
    formStep: '1',
-   isUserPassedFirstStep: false,
-   isUserPassedSecondStep: false,
-   dishName: undefined,
-   preparationTime: undefined,
-   dishType: undefined,
 };
 
-type actions = changeFormStepAction;
+type actions = changeFormStepAction | userConfiguredDishAction;
 
 export const appReducer = (
    state: AppState = initialState,
@@ -33,8 +30,20 @@ export const appReducer = (
          return { ...state, dishName: payload };
       case types.ASSIGN_DISH_TYPE:
          return { ...state, dishType: payload };
-      case types.USER_PASSED_1ST_STEP:
-         return { ...state, isUserPassedFirstStep: true };
+      case types.ASSIGN_PREPARATION_TIME:
+         return { ...state, preparationTime: payload };
+      case types.USER_CONFIGURED_DISH:
+         return { ...state, dishConfig: payload };
+
+      case types.RESET_FORM:
+         return {
+            ...state,
+            formStep: '1',
+            dishName: undefined,
+            preparationTime: undefined,
+            dishType: undefined,
+            dishConfig: undefined,
+         };
       default:
          return state;
    }

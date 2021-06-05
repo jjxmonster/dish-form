@@ -57,7 +57,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
                   {...input}
                   {...meta}
                   min='1'
-                  max='10'
+                  max='100'
                />
             );
          case 'numberFloat':
@@ -69,6 +69,17 @@ const InputComponent: React.FC<InputComponentProps> = ({
                   {...meta}
                   step='0.01'
                   min='1'
+               />
+            );
+         case 'number(1-10)':
+            return (
+               <StyledInput
+                  type='number'
+                  placeholder={placeholder}
+                  {...input}
+                  {...meta}
+                  min='1'
+                  max='10'
                />
             );
          default:

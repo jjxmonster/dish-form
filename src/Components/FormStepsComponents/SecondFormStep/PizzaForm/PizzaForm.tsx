@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Form, Field } from 'react-final-form';
-import { InputComponent } from '../../../index';
+import { FormButton, InputComponent } from '../../../index';
 import {
    StyledFormComponent,
    StyledFormFieldWrapper,
@@ -22,7 +22,7 @@ const PizzaForm = () => {
             };
             if (!values.no_of_slices) {
                errors.no_of_slices = 'Required';
-            } else if (values.no_of_slices > 10) {
+            } else if (values.no_of_slices > 100) {
                errors.no_of_slices = 'Too much slices';
             } else if (values.no_of_slices < 1) {
                errors.no_of_slices = 'You will pay for an empty plate';
@@ -34,7 +34,7 @@ const PizzaForm = () => {
             }
             return errors;
          }}
-         render={({ handleSubmit, form, submitting, pristine, values }) => (
+         render={({ handleSubmit, hasValidationErrors, values }) => (
             <StyledFormComponent onSubmit={handleSubmit}>
                <Field name='no_of_slices'>
                   {({ input, meta }) => (
@@ -72,6 +72,15 @@ const PizzaForm = () => {
                      </StyledFormFieldWrapper>
                   )}
                </Field>
+               {hasValidationErrors ? null : (
+                  <FormButton
+                     text='summary'
+                     values={{
+                        ...values,
+                        diameter: Number(values.diameter).toFixed(2),
+                     }}
+                  />
+               )}
             </StyledFormComponent>
          )}
       />
