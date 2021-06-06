@@ -1,3 +1,4 @@
+import gsap from 'gsap/all';
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -43,7 +44,15 @@ const FormButton: React.FC<FormButtonProps> = ({ text, values }) => {
       }
    };
 
-   return <StyledButton onClick={handleButtonClick}>{text}</StyledButton>;
+   React.useEffect(() => {
+      gsap.from('button', { opacity: 0, y: -20, duration: 0.3 });
+   }, []);
+
+   return (
+      <StyledButton className='button' onClick={handleButtonClick}>
+         {text}
+      </StyledButton>
+   );
 };
 
 export default FormButton;

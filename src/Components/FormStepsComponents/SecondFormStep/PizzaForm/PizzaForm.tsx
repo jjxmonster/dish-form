@@ -35,7 +35,7 @@ const PizzaForm = () => {
             return errors;
          }}
          render={({ handleSubmit, hasValidationErrors, values }) => (
-            <StyledFormComponent onSubmit={handleSubmit}>
+            <StyledFormComponent onSubmit={handleSubmit} className='form'>
                <Field name='no_of_slices'>
                   {({ input, meta }) => (
                      <StyledFormFieldWrapper>

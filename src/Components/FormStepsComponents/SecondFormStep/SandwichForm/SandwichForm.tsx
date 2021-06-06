@@ -28,7 +28,7 @@ const SandwichForm = () => {
             return errors;
          }}
          render={({ handleSubmit, hasValidationErrors, values }) => (
-            <StyledFormComponent onSubmit={handleSubmit}>
+            <StyledFormComponent onSubmit={handleSubmit} className='form'>
                <Field name='slices_of_bread'>
                   {({ input, meta }) => (
                      <StyledFormFieldWrapper>

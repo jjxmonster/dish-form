@@ -6,6 +6,9 @@ export const StyledFormContainer = styled.section`
    display: flex;
    flex-direction: column;
    position: relative;
+   @media (max-width: 1000px) {
+      height: 70%;
+   }
 `;
 
 export const StyledFormHeader = styled.header`

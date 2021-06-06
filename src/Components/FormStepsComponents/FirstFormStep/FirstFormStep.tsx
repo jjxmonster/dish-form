@@ -1,8 +1,9 @@
 import * as React from 'react';
 
+import { FormStepsAnimations } from '../FormStepsAnimations';
+
 import { Form, Field } from 'react-final-form';
 import { InputComponent, FormButton } from '../../index';
-
 import {
    StyledFormComponent,
    StyledFormFieldWrapper,
@@ -16,6 +17,9 @@ interface Errors {
 }
 
 const FirstFormStep: React.FC = () => {
+   React.useEffect(() => {
+      FormStepsAnimations();
+   }, []);
    return (
       <Form
          onSubmit={console.log}
@@ -40,7 +44,7 @@ const FirstFormStep: React.FC = () => {
          }}
          render={({ handleSubmit, hasValidationErrors, values }) => {
             return (
-               <StyledFormComponent onSubmit={handleSubmit}>
+               <StyledFormComponent onSubmit={handleSubmit} className='form'>
                   <Field name='name'>
                      {({ input, meta }) => (
                         <StyledFormFieldWrapper>
@@ -50,24 +54,6 @@ const FirstFormStep: React.FC = () => {
                               input={input}
                               meta={meta}
                               placeholder='Dish Name'
-                           />
-                           {meta.error && meta.touched && (
-                              <StyledErrorTextWrapper>
-                                 {meta.error}
-                              </StyledErrorTextWrapper>
-                           )}
-                        </StyledFormFieldWrapper>
-                     )}
-                  </Field>
-                  <Field name='preparation_time'>
-                     {({ input, meta }) => (
-                        <StyledFormFieldWrapper>
-                           <label>Preparation Time</label>
-                           <InputComponent
-                              type='time'
-                              input={input}
-                              meta={meta}
-                              placeholder='Preparation Time'
                            />
                            {meta.error && meta.touched && (
                               <StyledErrorTextWrapper>
@@ -95,6 +81,25 @@ const FirstFormStep: React.FC = () => {
                         </StyledFormFieldWrapper>
                      )}
                   </Field>
+                  <Field name='preparation_time'>
+                     {({ input, meta }) => (
+                        <StyledFormFieldWrapper>
+                           <label>Preparation Time</label>
+                           <InputComponent
+                              type='time'
+                              input={input}
+                              meta={meta}
+                              placeholder='Preparation Time'
+                           />
+                           {meta.error && meta.touched && (
+                              <StyledErrorTextWrapper>
+                                 {meta.error}
+                              </StyledErrorTextWrapper>
+                           )}
+                        </StyledFormFieldWrapper>
+                     )}
+                  </Field>
+
                   {hasValidationErrors ? null : (
                      <FormButton text='next' values={values} />
                   )}

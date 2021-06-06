@@ -2,40 +2,53 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { FormComponent } from '..';
 import { AppState } from '../../Reducers/appReducer';
+import gsap from 'gsap';
 
 import { StyledFormContainer, StyledFormHeader } from './FormContainer.css';
+
+const FormAnimations = (): void => {
+   gsap.fromTo('.form-title', { y: -50, opacity: 0 }, { y: 0, opacity: 1 });
+};
 
 const FormContainer: React.FC = () => {
    const formStep = useSelector((state: AppState) => state.formStep);
    const dishType = useSelector((state: AppState) => state.dishType);
+   const [formTitle, setFormTitle] = React.useState<string>('');
 
-   const FormTitleSwitch = (): JSX.Element => {
-      switch (formStep) {
-         case '1':
-            return <h1>1. Fill in the information about your dish.</h1>;
-         case '2': {
-            switch (dishType) {
-               case 'pizza':
-                  return <h1>2. Configure your pizza</h1>;
-               case 'soup':
-                  return <h1>2. Configure your soup</h1>;
-               case 'Sandwich':
-                  return <h1>2. Configure your sandwich</h1>;
-               default:
-                  return <h1>2. Configure your dish</h1>;
+   const FormTitleSwitch = () => {
+      const formTitle = document.querySelector('.form-title');
+      if (formTitle)
+         switch (formStep) {
+            case '1':
+               return setFormTitle(
+                  '1. Fill in the information about your dish.'
+               );
+            case '2': {
+               switch (dishType) {
+                  case 'pizza':
+                     return setFormTitle('2. Configure your pizza.');
+                  case 'soup':
+                     return setFormTitle('2. Configure your soup.');
+                  case 'Sandwich':
+                     return setFormTitle('2. Configure your sandwich.');
+                  default:
+                     return setFormTitle('2. Configure your dish.');
+               }
+            }
+            default: {
+               return setFormTitle('3. Your dish order summary.');
             }
          }
-         case '3': {
-            return <h1>3. Your dish order summary</h1>;
-         }
-         default:
-            return <h1>Form</h1>;
-      }
    };
+
+   React.useEffect(() => {
+      FormTitleSwitch();
+      FormAnimations();
+   });
    return (
       <StyledFormContainer>
          <StyledFormHeader>
-            <FormTitleSwitch />
+            <h1 className='form-title'>{formTitle}</h1>
          </StyledFormHeader>
          <FormComponent />
       </StyledFormContainer>

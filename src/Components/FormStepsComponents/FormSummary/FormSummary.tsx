@@ -58,7 +58,7 @@ const FormSummary: React.FC = () => {
          if ((res.status = 200)) {
             alert('Your dish has been successfully added');
             dispatch(resetForm());
-            // remove active class in navbar
+            // remove "active" class in navbar
             const getNavElements = document.querySelectorAll('.nav-element');
             const navElements = Array.from(getNavElements);
             navElements.forEach(item => item.classList.remove('active'));

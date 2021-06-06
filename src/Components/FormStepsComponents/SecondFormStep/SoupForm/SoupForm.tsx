@@ -30,7 +30,7 @@ const SoupForm = () => {
             return errors;
          }}
          render={({ handleSubmit, hasValidationErrors, values }) => (
-            <StyledFormComponent onSubmit={handleSubmit}>
+            <StyledFormComponent onSubmit={handleSubmit} className='form'>
                <Field name='spiciness_scale'>
                   {({ input, meta }) => (
                      <StyledFormFieldWrapper>
