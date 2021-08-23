@@ -1,6 +1,6 @@
 ## CHECK IT ONLINE!
 
-https://react-dish-form.herokuapp.com/
+https://dish-form-typescript.netlify.app/
 
 <p align="center">
 
